@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def fizzbuzz():
-    for n in range(1,101):
+    for n in range(1, 101):
         if ((n % 3 == 0) & (n % 5 == 0)):
             print("FizzBuzz", end=" ")
         elif (n % 3 == 0):
