@@ -6,7 +6,7 @@ if __name__ == "__main__":
     num_args = len(a)
 
     if num_args == 0:
-        print("{} argument".format(num_args))
+        print("{} {}".format(num_args, "arguments."))
     else:
         plural = 'argument' if num_args == 1 else 'arguments'
         print("{} {}:".format(num_args, plural))
