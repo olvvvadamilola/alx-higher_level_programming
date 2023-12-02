@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def print_reversed_list_integer(my_list=[]):
-    if not isinstance(my_list, list):
-        raise TypeError("`my_list` must be a list")
-    for item in reversed(my_list):
-        print("{:d}".format(item))
+    if isinstance(my_list, list):
+        b = len(my_list) - 1
+        for a in range(b, -1, -1):
+            print("{:d}".format(my_list[a]))
