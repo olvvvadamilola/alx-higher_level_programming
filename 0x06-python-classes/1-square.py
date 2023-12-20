@@ -4,6 +4,7 @@
         size(int): size of the square(private)
         Return: area of the square"""
 
+
 class Square:
     """
     This class represents a square.
