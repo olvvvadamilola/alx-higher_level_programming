@@ -88,21 +88,21 @@ class Square:
                 print()
             for _ in range(self.__size):
                 print(" " * self.__position[0] + "#" * self.__size)
-    
+
     def __str__(self):
         """
-        Prints the square using '#' characters with the given position (same behavior as my_print).
+        Prints the square using '#' characters with the given position (same
+        behavior as my_print).
 
         Returns:
         str: The string representation of the square.
         """
         square_str = ""
         if self.__size == 0:
-            square_str += "\n"
+            return "\n"
         else:
             for _ in range(self.__position[1]):
                 square_str += "\n"
-            for _ in range(self.__size):
-                square_str += " " * self.__position[0] + "#" * self.__size + "\n"
-        return square_str.strip()
-    
+            square_line = " " * self.__position[0] + "#" * self.__size + "\n"
+            square_str += square_line * self.__size
+            return square_str.rstrip("\n")
