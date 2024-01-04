@@ -59,10 +59,14 @@ def solve_util(board, col, N):
     return res
 
 def print_solution(board, N):
-    solution = [[i, j] for i in range(N) for j in range(N) if board[i][j] == 1]
-    solution.sort(key=lambda x: x[0] + x[1])
+    solution = []
+    for i in range(N):
+        for j in range(N):
+            if board[i][j] == 1:
+                solution.append([i, j])
     print(solution)
     print()
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
