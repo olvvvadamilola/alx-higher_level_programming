@@ -5,7 +5,8 @@
 class Rectangle:
     """class Rectangle that defines a rectangle
 
-    number_of_instances initialized to zero incremented during each new instance
+    number_of_instances initialized to zero
+    incremented during each new instance
     and decremented  during each instance deletion.
 
     Initialize a new Rectangle
