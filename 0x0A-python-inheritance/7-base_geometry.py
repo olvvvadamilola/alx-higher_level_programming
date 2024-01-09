@@ -3,21 +3,17 @@
 
 
 class BaseGeometry:
-    """class BaseGeometry"""
-    def __init__(self):
-        """initialize"""
-
     def area(self):
-        """ raises an Exception with the
-        message area() is not implemented"""
+        """Raises an exception as area() is not implemented."""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """function that validates value
+        """
+        Validates if the given value is a positive integer.
 
         Args:
-            name (str): string
-            value (int): _description_
+        - name (str): The name of the value being validated.
+        - value (int): The value to be validated.
         """
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(name))
