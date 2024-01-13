@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Unit tests for the Rectangle class."""
 
+import io
 import unittest
+from unittest.mock import patch
 from models.rectangle import Rectangle
 
 
@@ -73,6 +75,16 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(10, 20, 5, 10, 1)
         with self.assertRaises(ValueError):
             r.y = -1
+
+    def test_area(self):
+        r = Rectangle(10, 20, 5, 10, 1)
+        self.assertEqual(r.area(), 200)
+
+    def test_display(self):
+        r = Rectangle(2, 3)
+        with patch('sys.stdout', new=io.StringIO()) as fake_out:
+            r.display()
+            self.assertEqual(fake_out.getvalue(), '##\n##\n##\n')
 
 
 if __name__ == '__main__':
