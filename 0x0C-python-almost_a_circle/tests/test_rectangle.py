@@ -99,6 +99,9 @@ class TestRectangle(unittest.TestCase):
         r.update(89, 2, 3, 4, 5)
         self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
 
+        r.update(id=89, width=2, height=3, x=4, y=5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
+
 
 if __name__ == '__main__':
     unittest.main()
