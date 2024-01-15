@@ -116,3 +116,7 @@ class Rectangle(Base):
             'x': self.x,
             'y': self.y
         }
+
+    def to_csv(self):
+        """Return a list of CSV values for the Rectangle."""
+        return [self.id, self.width, self.height, self.x, self.y]

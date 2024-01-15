@@ -30,15 +30,16 @@ class Base:
         return json.dumps(list_dictionaries)
 
     @classmethod
-    def save_to_file(cls, list_objs):
-        """Write the JSON string representation of list_objs to a file."""
-        filename = "{}.json".format(cls.__name__)
-        json_list = []
+    def save_to_file_csv(cls, list_objs):
+        """Write the CSV representation of list_objs to a file."""
+        filename = "{}.csv".format(cls.__name__)
+        csv_list = []
         if list_objs is not None:
-            json_list = [obj.to_dictionary() for obj in list_objs]
+            csv_list = [obj.to_csv() for obj in list_objs]
 
-        with open(filename, 'w') as file:
-            file.write(cls.to_json_string(json_list))
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerows(csv_list)
 
     @staticmethod
     def from_json_string(json_string):
@@ -61,16 +62,16 @@ class Base:
         return dummy
 
     @classmethod
-    def load_from_file(cls):
-        """Return a list of instances."""
-        filename = cls.__name__ + ".json"
+    def load_from_file_csv(cls):
+        """Return a list of instances from a CSV file."""
+        filename = "{}.csv".format(cls.__name__)
 
         try:
             with open(filename, 'r') as file:
-                data = file.read()
-                if data:
-                    dictionaries = cls.from_json_string(data)
-                    instances = [cls.create(**dic) for dic in dictionaries]
+                reader = csv.reader(file)
+                csv_data = list(reader)
+                if csv_data:
+                    instances = [cls.create(*map(int, data)) for data in csv_data]
                     return instances
                 else:
                     return []
