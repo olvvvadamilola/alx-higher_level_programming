@@ -85,6 +85,14 @@ class TestRectangle(unittest.TestCase):
         with patch('sys.stdout', new=io.StringIO()) as fake_out:
             r.display()
             self.assertEqual(fake_out.getvalue(), '##\n##\n##\n')
+    
+    def test_str(self):
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
+        
+        r2 = Rectangle(5, 5, 1)
+        expected_output = "[Rectangle] ({}) 1/0 - 5/5".format(r2.id)
+        self.assertEqual(str(r2), expected_output)
 
 
 if __name__ == '__main__':
