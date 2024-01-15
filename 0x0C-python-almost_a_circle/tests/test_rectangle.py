@@ -81,18 +81,23 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.area(), 200)
 
     def test_display(self):
-        r = Rectangle(2, 3)
+        r = Rectangle(2, 3, 1, 1)
         with patch('sys.stdout', new=io.StringIO()) as fake_out:
             r.display()
-            self.assertEqual(fake_out.getvalue(), '##\n##\n##\n')
-    
+            self.assertEqual(fake_out.getvalue(), '\n ##\n ##\n ##\n')
+
     def test_str(self):
         r1 = Rectangle(4, 6, 2, 1, 12)
         self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
-        
+
         r2 = Rectangle(5, 5, 1)
         expected_output = "[Rectangle] ({}) 1/0 - 5/5".format(r2.id)
         self.assertEqual(str(r2), expected_output)
+
+    def test_update(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r), "[Rectangle] (89) 4/5 - 2/3")
 
 
 if __name__ == '__main__':
