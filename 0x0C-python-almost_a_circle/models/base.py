@@ -71,7 +71,8 @@ class Base:
                 reader = csv.reader(file)
                 csv_data = list(reader)
                 if csv_data:
-                    instances = [cls.create(*map(int, data)) for data in csv_data]
+                    instances = [cls.create(*map(int, data))
+                                 for data in csv_data]
                     return instances
                 else:
                     return []
